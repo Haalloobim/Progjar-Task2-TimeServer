@@ -8,7 +8,7 @@ import time
 def kirim_data(nama="kosong"):
     logging.warning(f"[THREAD-{nama}] Starting client thread")
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = ('172.16.16.101', 45000)  # Update port to 45000
+    server_address = ('localhost', 45000)  # Update port to 45000
     logging.warning(f"[THREAD-{nama}] Connecting to {server_address}")
     sock.connect(server_address)
 
