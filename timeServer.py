@@ -16,13 +16,10 @@ class ProcessTheClient(threading.Thread):
                 data = self.connection.recv(1024)
                 if not data:
                     break
-
-                # Decode the data and strip carriage return and newline
                 decoded_data = data.decode().strip()
                 logging.warning(f"Request from {self.address}: {decoded_data}")
 
                 if decoded_data.startswith("TIME"):
-                    # Respond with current date and time
                     now = datetime.now()
                     waktu = now.strftime("%d %m %Y %H:%M:%S")
                     response = f"JAM {waktu}\r\n"
@@ -34,7 +31,6 @@ class ProcessTheClient(threading.Thread):
                     break
 
                 else:
-                    # Invalid request, respond with error message
                     response = "ERROR Invalid command\r\n"
                     self.connection.sendall(response.encode())
 
